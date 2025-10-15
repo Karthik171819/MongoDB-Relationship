@@ -1,4 +1,5 @@
-const mongodb = require('mongodb');
+//import mongodb from "mongodb";
+const mongodb = require ('mongodb');
 const MongoClient = mongodb.MongoClient;
 
 (async () => {
@@ -12,6 +13,19 @@ const MongoClient = mongodb.MongoClient;
         console.log("Database  connected");
      }
     return database;
-});
+    });
 
+//database query
+    const orders = await database.collection('orders').aggregate([
+    {
+        $lookup:{
+            from: 'products',
+            localField:'product_ids',
+            foreignField:'_id',
+            as: "orderProducts"
+        }
+    }
+]).toArray()
+console.log(orders)
 
+();
