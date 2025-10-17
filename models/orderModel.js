@@ -1,0 +1,1 @@
+//for every collection in mongoose you should do create model 

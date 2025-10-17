@@ -30,7 +30,7 @@
 
 // ();
 
-//Mongoose connection
+//Mongoose connection 
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://127.0.0.1:27017')
@@ -39,4 +39,3 @@ mongoose.connect('mongodb://127.0.0.1:27017')
 }).catch( () => {
     console.log("Database not connected");
 })
-
