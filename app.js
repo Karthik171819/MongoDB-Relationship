@@ -32,10 +32,16 @@
 
 //Mongoose connection 
 const mongoose = require('mongoose');
-
-mongoose.connect('mongodb://127.0.0.1:27017')
+const OrderModel = require('./models/orderModel');
+require('./models/productModel');
+(async () => {
+mongoose.connect('mongodb://127.0.0.1:27017/shop')
 .then( () => {
     console.log("Database connected");
 }).catch( () => {
     console.log("Database not connected");
 })
+
+const orders = await OrderModel.find({}).populate(['product_ids', 'customers_id']) //if it is single no need to give an array
+console.log(orders);// can stringify
+}) ();
